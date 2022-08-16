@@ -1,0 +1,122 @@
+Component Lifecycle
+
+1. ngOnChanges() : 
+ngOnChanges() is Invoked every time whenever there is a change in one of the input properties of the component.
+
+ngOnChanges(changedvals: SimpleChanges) {
+ for (let f in changedvals) {
+ let c = changedvals[propName];
+ let current = JSON.stringify(c.currentValue);
+ let previous = JSON.stringify(c.previousValue);
+ this.changeLog.push(`${propName}: currentValue = ${current}, previousValue = ${previous}`);
+ }
+}
+
+2.ngOnInit() :
+
+The method is called right after the constructor and the ngOnChanges() method are triggered. This is the lifecycle hook used for the initialization of the component/directive. One important thing to notice here is that ngOnChanges() always executes before ngOnInit().
+
+The ngOnInit() hook is the most important lifecycle hook in Angular because it identifies the initialization of the newly created component. The fact that this hook is called only once during the rendering, Most importantly, this hook is being used for fetching data from external sources like servers and APIs.
+
+ngOnInit() 
+ {
+ this.logIt(``); 
+ }
+
+
+3. ngDoCheck()
+Angular does not detect changes by itself so for that, we need another lifecycle hook called ngDoCheck(). This is run every time after ngOnInit() and ngOnChanges() and is executed every time the process of change detection takes place.
+
+The hook ngDoCheck() allow the developers to check their data manually. It can be used to trigger a new application date conditionally. In conjunction with "ChangeDetectorRef", the developers can create their own checks for change detection.
+
+ngDoCheck() {
+
+ if (this.val !== this.oldval) {
+ this.changeDetected = true;
+ this.changeLog.push(`DoCheck: Value changed to "${this.val}" from "${this.oldval}"`);
+ this.oldval = this.val;
+ }
+
+ this.changeDetected = false;
+}
+
+
+4. ngAfterContentInit()
+
+This lifecycle hook is invoked whenever there is content projection happening inside the component’s view. This one is invoked just once after ngDoCheck() and once all the bindings of the components have been checked.
+
+This lifecycle hook is called only once during the component’s lifecycle execution and after the first ngDoCheck() hook. And by using this hook, we have all the access for the first time for accessing the "ElementRef" of the "ContentChild()" after the component’s creation; along with the projected external content into the component’s view seamlessly.
+
+5. ngAfterContentChecked()
+Invoked right after ngAfterContentInit() and subsequent ngDoCheck(), this lifecycle hook responds after the content of the component has been checked by the content projection process. This hook method is always called in response.
+
+@ContentChild(ChildComponent) contentChild: ChildComponent;
+
+ ngAfterContentInit() {
+
+ this.logIt('');
+ }
+
+ ngAfterContentChecked() {
+
+ if (this.val === this.contentChild.val) {
+ this.logIt('Checked with no change');
+ } 
+ else {
+ this.val = this.contentChild.val;
+ this.logIt('Checked');
+
+ }
+ }
+
+6. ngAfterViewInit() :
+
+This one is invoked after all the component bindings have been checked with the use of ngAfterContentInit() and ngAfterContentChecked(). This is also a response hook method that invokes when component views and child views are initialized by Angular. And this applies only to components and not directives.
+
+Angular ngAfterViewInit() hook is a method of the "AfterViewInit" interface and the ngAfterViewInit() is a lifecycle hook that is called after the Angular component's view has been completely initialized. ngAfterViewInit() is used to handle any additional initialization tasks as or whenever required.
+
+7. ngAfterViewChecked() :
+
+A response hook method is invoked every time Angular has checked the component views and the child view. It takes place even if there has been no change or update. This also applies only to components. This is invoked right after ngAfterViewInit() and every subsequent ngAfterContentChecked().
+
+export class AfterViewComponent implements AfterViewChecked, AfterViewInit {
+ private val = '';
+
+ @ViewChild(ChildComponent) viewChild: ChildComponent;
+
+ ngAfterViewInit() {
+
+ this.logIt('');
+ }
+
+ ngAfterViewChecked() {
+
+ if (this.val === this.viewChild.val) {
+ this.logIt('AfterViewChecked ');
+ } else {
+ this.val = this.viewChild.val;
+ this.logIt('AfterViewChecked');
+ }
+ }
+8. ngOnDestroy():
+
+When a component comes to its last stage, Angular has the task of destroying it. So before the destruction of the component/directive, some important detachment steps have to take place. These steps are performed by our ngOnDestroy() lifecycle hook method.
+
+In other words, The hook "ngOnDestroy()" gets fired when any of the application components are going to be removed from the view and subsequent DOM structure. This hook provides the feasibility to clean up any unattended ends before a component’s deletion from the DOM.
+
+This method is implemented right before Angular destroys the component/directive. Some of the processes that this method performs are :
+
+Clean Up
+
+Unsubscribe Observables
+
+Detach Event Handlers to avoid memory leak
+
+Stop Interval timers
+
+Unregister Callbacks
+
+ngOnDestroy()
+{
+ this.logIt(``); 
+}
