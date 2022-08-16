@@ -1,0 +1,8 @@
+Code Merge:
+=====================
+current branch mytoll-r2203.1
+working branch mytoll-r2204
+Merge Branch 'mytoll-r2203.1'into 'mytoll-r2204'
+1. take pull(latest code) for both branch into your local
+2. Always point targetd branch where we need
+3. 
