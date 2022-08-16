@@ -1,0 +1,11 @@
+<p>parent works!</p>
+<i>List of people working in different platform !!</i>
+<ul>
+    <li *ngFor="let item of userData">{{item.name}} and {{item.job}}</li>
+   
+</ul>
+<h4>Given : {{date | date:'short'}}</h4>
+<h4>Given : {{date | date:'shortDate'}}</h4>
+
+<h4>Given : {{date | date:'shortTime'}}</h4>
+<app-child [nameVal]="name" (myData) = "peopleList($event)"></app-child>

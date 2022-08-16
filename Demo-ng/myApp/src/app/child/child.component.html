@@ -1,0 +1,24 @@
+<p>child works!</p>
+<h4>Name of person is: <strong>{{myObj.name}}</strong> and Mark is:<strong>{{myObj.mark}}</strong></h4>
+<table>
+    <tr>
+        <th>Name</th>
+        <th>Mark</th>
+    </tr>
+   <tbody>
+    <tr *ngFor ="let item of profileList">
+        <td>{{item.name}}</td>
+        <td>{{item.mark}}</td>
+    </tr>
+   </tbody>
+</table>
+<hr>
+<div>
+    <label>Name</label><br>
+    <input type="text" name="name" #name ><br>
+    <label>Mark</label><br>
+    <input type="text" name="mark" #mark/><br>
+</div>
+<input type="text" #name>
+<br>
+<button (click) = "this.titleUpdateFun.emit({'name' : name.value,'mark':mark.value})">Click Here</button>
