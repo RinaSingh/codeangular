@@ -1,0 +1,44 @@
+============+ES6+=======================
+1.https://www.interviewbit.com/es6-interview-questions/
+2.https://www.mygreatlearning.com/blog/es6-interview-questions/
+3.https://www.bestinterviewquestion.com/es6-interview-questions
+
+====================+SDLC+==============================
+https://www.interviewbit.com/sdlc-interview-questions/#experienced
+https://www.interviewbit.com/agile-interview-questions/
+====================+GIT+======================
+1. https://www.interviewbit.com/git-cheat-sheet/
+===============+Angular+=========================
+1. when we have other Submodule(authModule) then need to register that module to root module(i.e app.module), so we can access Submodule component(i.e: loginComponent) to the main view(app.html) via writing exports:[componentName] to Submodule.
+2. slice pipe {{name | slice:3:5}} it consider index 3 onwards and exclude index 5
+ex: Welcome ---> co (it consider from 3 index and excluded 5 index)
+
+3. service
+	a)Share Data
+	b)Implement Application Logic
+	c)External connection (database)
+4. error handling in angular
+
+5.base tag forwarding slash means how the url showing while navigating
+
+https://www.youtube.com/watch?v=lBZ1dhCBaJQ&list=PLfyWdpsiUiPAcHftMr_R0HwSyAVHCW5cR&index=5
+https://www.youtube.com/watch?v=DehuHjZ8V8I
+
+https://github.com/learning-zone/angular-interview-questions/blob/master/unit-testing-questions.md
+
+https://www.tektutorialshub.com/angular/subjects-in-angular/
+https://www.bezkoder.com/angular-13-template-driven-form-validation/
+=============================================
+https://www.youtube.com/watch?v=qh5nHv-4aw0&list=PLzAGFfNxKFua6R8A3T1cVhEsPN7UqF1CH&index=26
+https://www.youtube.com/watch?v=NvHadEcsbP4&list=PLLhsXdvz0qjL1HVD2jAtlvoDmS5qj0OvA&index=42
+
+
+============================================================
+https://www.youtube.com/watch?v=oMj95u2zK4Y&list=PL8p2I9GklV47eNpoo4Fr6fkags72a8F0v
+1. Maven cmd - mvn clean install -Dmaven.test.skip=true
+
+%MAVAN_HOME%\bin
+
+2.sonar:
+user:admin
+p/w:Myt...@123
