@@ -1,0 +1,51 @@
+/* Global custom css */
+.client-bg-primary{
+  background:#067984;
+  color:#fff;
+}
+.cancel-btn{
+  border-color:#067984;
+  color:#067984;
+}
+ul{padding:0;}
+ul li{list-style-type: none;}
+/* close Global */
+.mat-stepper-horizontal {
+    margin-top: 8px;
+  }
+  .mat-stepper-horizontal-line{display: none;}
+  .mat-form-field {
+    margin-top: 16px;
+  }
+  /* Card */
+  .example-card {
+    max-width: 600px;
+  }
+  /* Radio */
+  .example-radio-group {
+    display: flex;
+    flex-direction: column;
+    margin: 15px 0;
+    align-items: flex-start;
+  }
+  
+  .example-radio-button {
+    margin: 5px;
+  }
+  /* Table */
+  .example-form {
+    min-width: 150px;
+    max-width: 500px;
+    width: 100%;
+  }
+  
+  .example-full-width {
+    width: 10%;
+  }
+  .ml-10{
+    margin-left: 10px;
+    display:inline-block;
+  }
+  .example-pay-full-width{
+    width:100%;
+  }

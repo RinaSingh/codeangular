@@ -1,0 +1,51 @@
+<p>core-ice-cream-shop works!</p>
+
+<mat-card class="example-card">
+    <mat-card-content>
+        <mat-horizontal-stepper [linear]="isLinear" #stepper>
+            <mat-step label="Choose Base" [stepControl]="firstFormGroup">
+                <h3>Welcome to the Trapeze Ice Cream Shop! Who is buying, and what base would you like to have?</h3>
+                <form [formGroup]="firstFormGroup">
+                <mat-form-field appearance="fill">
+                    <mat-label>Choose an option</mat-label>
+                    <mat-select [(ngModel)]="selectedOption" required formControlName="optionCtrl">
+                      <mat-option value="{{option.userFullName}}" *ngFor="let option of users">{{option.userFullName}}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <p>Your selection is: {{selectedOption}}</p>
+                <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group"
+                [(ngModel)]="selectedBase" (change)="onItemChange(selectedBase)" formControlName="radioCtrl">
+                <mat-radio-button class="example-radio-button" *ngFor="let base of baseList" [value]="base.name">
+                    {{base.name}}
+                </mat-radio-button>
+                </mat-radio-group>
+                <div>Your favorite base is: {{selectedBase}}</div>
+                </form>
+            </mat-step>
+            <mat-step label="Choose Flavours" [stepControl]="secondFormGroup">
+                <h3>Awesome! Please select the number of scoops of each flavour. </h3>
+                <form [formGroup]="secondFormGroup">
+                    <ul>
+                        <li *ngFor="let flavour of flavourList">
+                            <mat-form-field class="example-full-width" appearance="fill">
+                                <input matInput type="text" name="{{flavour.name}}" [(ngModel)]="selectedFlavours[flavour.name]" maxlength="1" formControlName="secondCtrl" required>
+                            </mat-form-field>
+                            <span class="ice-flavours-name ml-10">{{flavour.name}}</span>
+                        </li>
+                    </ul>
+                </form>
+                <button type="button" (click)="scoopeAmount()">Click flavour</button>
+            </mat-step>
+            <mat-step label="Payment">
+                <h3>And your total comes to....</h3>
+                <mat-form-field class="example-pay-full-width" appearance="fill">
+                    <input matInput disabled [value]="paymentAmount">
+                </mat-form-field>
+                <p>
+                    <button mat-stroked-button class="cancel-btn">Cancel</button>
+                    <button mat-flat-button class="ml-10 client-bg-primary" (click)="payment()">Proceed with payment</button>
+                </p>
+            </mat-step>
+        </mat-horizontal-stepper>
+    </mat-card-content>
+</mat-card>
