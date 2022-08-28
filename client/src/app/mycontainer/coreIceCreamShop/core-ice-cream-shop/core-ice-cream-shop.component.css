@@ -8,18 +8,13 @@
   border-color:#067984;
   color:#067984;
 }
-/* .mat-horizontal-content-container, form{
-  text-align:center;
-  margin:0 auto;
-} */
+
 ::ng-deep .mat-horizontal-stepper-header-container{
   background-color:#EEF2F4 !important;
   
 }
 .text-danger{color:red}
-/* .example-radio-group{
-  margin-left:31% !important;
-} */
+
  h3, p{
  
   font-size: 14px;
@@ -27,7 +22,7 @@
   color: #5B727C;
   margin-bottom: 5px;
 }
-ul{padding:0;}
+ul{padding:0;column-count: 2;}
 ul li{list-style-type: none;}
 /* close Global */
 .mat-stepper-horizontal {
@@ -59,8 +54,11 @@ ul li{list-style-type: none;}
     width: 100%;
   }
   
-  .example-full-width {
-    /* width: 10%; */
+  .mat-form-field.example-full-width{
+    margin-top: 16px;
+    line-height: 5px;
+    vertical-align: middle;
+    width: 20%;
   }
   .ml-10{
     margin-left: 10px;
