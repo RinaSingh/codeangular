@@ -1,62 +1,8 @@
 <p>core-ice-cream-shop works!</p>
-
-<!-- <mat-card class="example-card m-auto">
-    <mat-card-content>
-        <mat-horizontal-stepper linear>
-            <mat-step label="Choose Base" [stepControl]="firstFormGroup">
-                <h3>Welcome to the Trapeze Ice Cream Shop!</h3>
-                <p>Who is buying, and what base would you like to have?</p>
-                <form [formGroup]="firstFormGroup">
-                    <mat-form-field appearance="fill">
-                        <mat-label>Choose an option</mat-label>
-                        <mat-select [(ngModel)]="selectedOption" formControlName="optionCtrl">
-                        <mat-option value="{{option.userFullName}}" *ngFor="let option of users">{{option.userFullName}}</mat-option>
-                        </mat-select>
-                    </mat-form-field>
-                    <h4>Your selection is: {{selectedOption}}</h4>
-                    <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group"
-                    [(ngModel)]="selectedBase" formControlName="radioCtrl" (change)="baseAmount()">
-                        <mat-radio-button class="example-radio-button" *ngFor="let base of baseList" [value]="base.name" >
-                            {{base.name}}
-                        </mat-radio-button>
-                    </mat-radio-group>
-                    <h4>Your favorite base is: {{selectedBase}}</h4>
-                </form>
-            </mat-step>
-            <mat-step label="Choose Flavours" [stepControl]="secondFormGroup">
-                <h3>Awesome! Please select the number of scoops of each flavour. </h3>
-                <form [formGroup]="secondFormGroup">
-                   
-                    <p class="text-danger" *ngIf="secondFormGroup.errors && secondFormGroup.touched">{{secondFormGroup.errors.required}}</p> -->
-                    <!-- <ul>
-                        <li *ngFor="let flavour of flavourList">
-                            <mat-form-field class="example-full-width" appearance="fill">
-                                <input matInput type="number" name="{{flavour.name}}" [(ngModel)]="selectedFlavours[flavour.name]" maxlength="1" formControlName="{{flavour.name}}" (change)= "validateFlavours()">
-                            </mat-form-field>
-                            <span class="ice-flavours-name ml-10">{{flavour.name}} {{selectedFlavours[flavour.name]}}</span>
-                        </li>
-                    </ul>
-                </form>
-                
-            </mat-step>
-            <mat-step label="Payment">
-                <h3>And your total comes to....</h3>
-                <mat-form-field class="example-pay-full-width" appearance="fill">
-                    <input matInput disabled value ="{{basePaymentAmount+scoopePaymentAmount}}">
-                </mat-form-field>
-                <p>
-                    <button mat-stroked-button class="cancel-btn" (click)="goToCancel()">Cancel</button>
-                    <button mat-flat-button class="ml-10 client-bg-primary" (click)="goToPayment()">Proceed with payment</button>
-                </p>
-            </mat-step>
-        </mat-horizontal-stepper>
-    </mat-card-content>
-</mat-card>  -->
-<!-- New Ice Cream Parlor -->
 <mat-card class="example-card m-auto">
     
     <mat-card-content>
-        <form [formGroup]="iceParlorForm" (ngSubmit)="onSubmit()">
+        <form [formGroup]="iceParlorForm">
             <mat-horizontal-stepper linear>
                 <mat-step label="Choose Base" formGroupName="iceBaseGroup" [stepControl]="iceParlorForm.get('iceBaseGroup')!">
                     <h3>Welcome to the Trapeze Ice Cream Shop!</h3>
@@ -76,11 +22,10 @@
                     </mat-radio-group>
                     <h4>Your favorite base is: {{selectedBase}}</h4>
                 </mat-step>
-                <mat-step label="Choose Flavours" formGroupName="iceFlavourGroup" [stepControl]="iceParlorForm.get('iceFlavourGroup')!">
-                    <!-- <p class="text-danger" *ngIf="!iceParlorForm.get('iceFlavourGroup').valid && iceParlorForm.get('iceFlavourGroup').touched">Please select at least one scoope</p> -->
-                    <p class="text-danger" *ngIf="iceParlorForm.get('iceFlavourGroup').errors && iceParlorForm.get('iceFlavourGroup').touched">{{iceParlorForm.get('iceFlavourGroup').errors.required}}</p>
-                    
-                    <p *ngIf="isValidate && iceParlorForm.get('iceFlavourGroup').touched " class="text-danger">We will not give Cookie Dough flavour in the Sugar Cone base.</p>
+                <mat-step label="Choose Flavours" formGroupName="iceFlavourGroup" [stepControl]="iceParlorForm">
+                    <h3>Awesome! Please select the number of scoops of each flavour. </h3>
+                    <p class="text-danger" *ngIf="iceParlorForm.errors && iceParlorForm.touched"> {{iceParlorForm.errors.required}}</p>
+                   
                     <ul>
                         <li *ngFor="let flavour of flavourList">
                             <mat-form-field class="example-full-width" appearance="fill">
@@ -93,7 +38,7 @@
                 <mat-step label="Payment">
                     <h3>And your total comes to....</h3>
                     <mat-form-field class="example-pay-full-width" appearance="fill">
-                        <input matInput disabled value ="{{basePaymentAmount+scoopePaymentAmount}}">
+                        <input matInput disabled value ="{{basePaymentAmount+scoopePaymentAmount |currency}}">
                     </mat-form-field>
                     <p>
                         <button mat-stroked-button class="cancel-btn" (click)="this.iceParlorForm.reset()">Cancel</button>
@@ -101,7 +46,6 @@
                     </p>
                 </mat-step>
             </mat-horizontal-stepper>
-            <button type="submit">Click</button>
         </form>
     </mat-card-content>
 </mat-card>

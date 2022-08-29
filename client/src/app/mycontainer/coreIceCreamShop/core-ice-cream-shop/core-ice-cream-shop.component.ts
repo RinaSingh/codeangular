@@ -18,7 +18,6 @@ interface selectUser {
 })
 
 export class CoreIceCreamShopComponent implements OnInit {
-  isValidate:boolean = false;
   selectedBase: string | undefined;
   selectedOption: string | undefined;
   coreIceCreamInfo: any = {};
@@ -35,9 +34,6 @@ export class CoreIceCreamShopComponent implements OnInit {
   selectedFlavours: any = {};
   scoopeRate =[0,2,3,3.50,3.80];
   isDisabled:Boolean = false;
-  
-  // firstFormGroup:FormGroup;
-  // secondFormGroup:FormGroup
   iceParlorForm:FormGroup;
 
   constructor(
@@ -52,10 +48,7 @@ export class CoreIceCreamShopComponent implements OnInit {
 
   ngOnInit(): void {
     //Reactive Form
-    // this.firstFormGroup = this._formBuilder.group({
-    //   optionCtrl: ['', Validators.required],
-    //   radioCtrl: ['', Validators.required]
-    // });
+    
     //Dynamic generated Form control
     let form ={}
     let formCntrl = Object.keys(this.selectedFlavours);
@@ -63,25 +56,20 @@ export class CoreIceCreamShopComponent implements OnInit {
           Validators.maxLength(1),
           Validators.pattern('[1-4]')
         ])) );
-    // this.secondFormGroup = this._formBuilder.group(form,{validators:[flavourValidation,flavourCombinationValidation]});
     
     this.iceParlorForm = new FormGroup({
         'iceBaseGroup': new FormGroup({
           'userSelectCntrl':new FormControl(null, Validators.required),
           'iceBaseSelectCntrl': new FormControl(null,Validators.required),
         }),
-        'iceFlavourGroup': new FormGroup(form,{validators:[flavourGlobalValidation,flavourCombinationValidation]}) 
-    })
+        'iceFlavourGroup': new FormGroup(
+          form
+        ) 
+
+    },{validators:[flavourGlobalValidation,flavourCombinationValidation]})
     
   }
-  //,{validators:this.baseIce}
-   baseIce(group:AbstractControl):{[key:string]:any}|null{
-    console.log("rina group");
-    console.log(group);
-    const baseIceCntrl = group.get('iceBaseSelectCntrl');
-    const iceFlavCntrl = group.get('CookieDough');
-    return baseIceCntrl && iceFlavCntrl ? {'error':'Not Valid Choose'} : null
-   }
+  
   //Intial create flavour object
   createFlavoursObject() {
     for (let object of this.flavourList) {
@@ -136,26 +124,9 @@ export class CoreIceCreamShopComponent implements OnInit {
     this.scoopePaymentAmount = scoopeCount >= this.scoopeRate.length ? 0 : this.scoopeRate[scoopeCount];
   }
 
-  //Validation (Rough Code)
+  //Validation
   validateFlavours(){
-    // let selectedScoope = this.createFlavourArray();
-    // let CookieDoughFlav = selectedScoope.find( item => item === 'CookieDough');
-    // let uniqueArray = [...new Set(selectedScoope)].filter(item => item === 'CookiesAndCream'||item === 'MooseTracks' || item === 'Vanilla')
-    //let allComboFlavour = uniqueArray.every
-    // console.log(this.selectedBase === "SugarCone" || CookieDoughFlav);
-    // if(this.selectedBase === "SugarCone" || CookieDoughFlav){
-    //   this.isValidate = true;
-    // }
-    // else if(this.selectedBase === "CakeCone" && (uniqueArray.indexOf('Vanilla') !== -1 && uniqueArray.indexOf('MooseTracks') !== -1 && uniqueArray.indexOf('CookiesAndCream') !== -1)){
-    //   this.isValidateOther = true;
-      
-    // }
    this.scoopeAmount();
-
   }
-  //Rough code
-  onSubmit(){
-    
-    console.log(this.iceParlorForm);
-  }
+  
 }
