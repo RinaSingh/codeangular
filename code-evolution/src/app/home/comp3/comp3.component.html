@@ -1,0 +1,22 @@
+<p>comp3 works!</p>
+<div class="container">
+  <div class="mb-3 col-6 border border-primary p-3">
+    <label class="form-label">User Name is:{{updateName}}</label>
+    <input type="text" class="form-control" placeholder="User Name" [(ngModel)]="updateName">
+  </div>
+  <div class="col-auto">
+    <button type="button" class="btn btn-primary mb-3" (click)="updateUserName()">Update</button>
+  </div>
+</div>
+
+<hr>
+<div class="container border border-danger">
+  <div class="col-auto">
+    <button type="button" class="btn btn-success mb-3 mr-5" (click)="observeDataEvent()">Observable button</button>
+    <button type="button" class="btn btn-danger mb-3" (click)="subjectDataEvent()">Subject button</button>
+  </div>
+  <h1>Observable Data</h1>
+  <p>{{observeData1}} | {{observeData2}}</p>
+  <h1>Subject Data</h1>
+  <p>{{subjectData1}} | {{subjectData2}}</p>
+</div>

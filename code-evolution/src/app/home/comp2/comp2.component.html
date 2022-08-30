@@ -1,0 +1,10 @@
+<p>comp2 works!</p>
+<div class="container">
+  <div class="mb-3 col-6 border border-primary p-3">
+    <label class="form-label">User Name is:{{updateName}}</label>
+    <input type="text" class="form-control" placeholder="User Name" [(ngModel)]="updateName">
+  </div>
+  <div class="col-auto">
+    <button type="button" class="btn btn-primary mb-3" (click)="updateUserName()">Update</button>
+  </div>
+</div>

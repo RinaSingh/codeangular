@@ -1,0 +1,40 @@
+<h1>User management</h1>
+<hr>
+<div class="container border border-success bg-light p-3">
+    <div class="col-6 border border-warning p-3">
+        <h3>User Form</h3>
+        <form (ngSubmit)="onSubmitted(formData.value)" #formData="ngForm">
+            <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">User Name</label>
+                <input type="text" class="form-control" id="exampleInputEmail1" name="name" ngModel required #name="ngModel">
+                <small class="text-danger" *ngIf="!name.valid && name.touched">Enter User Name</small>
+            </div>
+            <div class="mb-3">
+                <label for="exampleInputPassword1" class="form-label">Technologies</label>
+                <input type="text" class="form-control" id="exampleInputPassword1" name="technologies" ngModel required #technologies="ngModel">
+                <small class="text-danger" *ngIf="!technologies.valid && technologies.touched">Enter Technologies</small>
+            </div>
+            <button type="submit" class="btn btn-primary">Add Data</button>
+            <button type="button" class="btn btn-success">Fetech Data</button>
+        </form>
+    </div>
+    <div class="col-6 border border-danger p-3">
+        <h3>User Management Data</h3>
+        <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">Sno.</th>
+                <th scope="col">User Name</th>
+                <th scope="col">Technologies</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let userdata of userMangmntDetails;let i = index">
+                <th>{{i | number}}</th>
+                <td>{{userdata.name | uppercase}}</td>
+                <td>{{userdata.technologies}}</td>
+              </tr>
+            </tbody>
+          </table>
+    </div>
+</div>

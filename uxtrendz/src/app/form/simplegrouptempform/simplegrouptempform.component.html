@@ -1,0 +1,31 @@
+
+<div class="col-md-7 m-auto border border-warning bg-light p-5">
+    <form (ngSubmit) = "submitForm(myForm)" name="myForm" #myForm = "ngForm">
+        <div ngModelGroup="userDetails" #userdetails="ngModelGroup">
+            <div class="mb-3">
+                <label for="username" class="form-label">*User Name</label>
+                <input type="text" class="form-control" id="username" placeholder="Enter User Name" name="username" ngModel #username="ngModel" required>
+            </div>
+            <!-- <button class="btn btn-success" (click)="showDataSet()">Set Value</button> -->
+            <div class="mb-3">
+            <label for="email" class="form-label">*Email address</label>
+            <input type="email" class="form-control" id="email" name="emailaddress" ngModel #emailaddress="ngModel" required>
+            </div>
+            <div class="mb-3">
+            <label for="password" class="form-label">Password</label>
+            <input type="password" class="form-control" id="password" name="password" ngModel #password="ngModel" required>
+            </div>
+        </div>
+        <small class="text-danger" *ngIf="!userdetails.valid && userdetails.touched">Enter user details</small>
+        <div class="mb-3">
+            <label for="hobbies" class="form-label">Example textarea</label>
+            <textarea class="form-control ng-text" id="hobbies" rows="3" name="hobbies" ngModel #hobbies="ngModel"></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>
+<div class="col-md-5 mt-3 bg-success text-dark">
+    <p>username: {{dataStore.username}}</p>
+    <h1>{{dataStore.emailaddress}} and my hobbies is {{dataStore.hobbies}}.</h1>
+    <h3>Thankyou</h3>
+</div>

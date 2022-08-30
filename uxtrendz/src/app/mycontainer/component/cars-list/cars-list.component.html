@@ -1,0 +1,4 @@
+<h1>{{carTitle}}</h1>
+<ul>
+    <li *ngFor="let car of carLists; let i=index" >{{(car.name | txtShortPipe:3 )+' : '+ car.price}}</li>
+</ul>

@@ -1,0 +1,49 @@
+<div class="container">
+
+    <div class="row">
+        <div class="col-12" *ngIf="errorMsg">
+            <div class="alert alert-danger" role="alert">
+                <strong>Error Occured: {{errorMsg}}</strong>
+            </div>
+        </div>
+        <div class="col-6">
+        </div>
+        <div class="col-6">
+            <a routerLink="/dashboard" class="btn btn-outline-warning">Dashboard</a>&nbsp;
+            <a href="#" class="btn btn-outline-info">SignIn</a>
+        </div>
+    </div>
+    
+</div>
+<div class="col-7 border border-success p-3 m-auto">
+    <div class="row">
+        <div class="col-md-6">
+            <h4>Login Form</h4>
+            <form [formGroup] ="Form" (ngSubmit)="onSubmitData()">
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="basic-addon1">username</span>
+                    <input type="text" class="form-control" placeholder="Enter Username" name="email" formControlName="email">
+                    <!-- <small class="text-danger w-100" *ngIf="Form.get('email')?.invalid && Form.get('email').touched">Please Enter Username</small> -->
+                </div>
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="basic-addon1">password</span>
+                    <input type="text" class="form-control" placeholder="Enter Password" name="password" formControlName="password">
+                    <!-- <small class="text-danger w-100" *ngIf="Form.get('password')?.invalid && Form.get('password').touched">Please Enter Password</small> -->
+                </div>
+                <button type="submit" class="btn btn-primary">{{onModeLogin ? 'SignIn' : 'SingUp'}}</button>
+
+            </form>
+            
+            <p>{{onModeLogin ? 'Dont have account?' : 'Already have an account'}} <a href="#" (click)="onModeSwitch()">{{onModeLogin ? 'Create One' : 'Sign In'}} </a></p>
+            <a href="#">Forget password</a>
+        </div>
+        <div class="col-md-6">
+            <h4>Login with social website</h4>
+            <button type="button" class="btn btn-warning">SignIn via Gmail</button><br>
+            <button type="button" class="btn btn-secondary mt-2">SignIn via Facebook</button>
+            <hr>
+        </div>
+    </div>
+    
+
+</div>

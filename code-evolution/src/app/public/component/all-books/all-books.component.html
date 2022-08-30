@@ -1,0 +1,17 @@
+<div class="container border border-danger pt-3 pb-3">
+    <div class="row">
+        <div class="col-4" *ngFor="let post of blogPosts,let i = index">
+            <!-- card style -->
+            <div class="card" style="width: 18rem;">
+                <img src="{{post.img}}" class="card-img-top" alt="..." style="width:200px;height:200px">
+                <div class="card-body">
+                    <h5 class="card-title">{{post.title}}</h5>
+                    <p class="card-text">{{post.description}}</p>
+                    <a class="btn btn-primary" [routerLink] = "['./book-details/',i]">Go Details</a>
+                </div>
+            </div>
+            <!-- close card style -->
+        </div>
+    </div>
+</div>
+<!-- <router-outlet></router-outlet> -->

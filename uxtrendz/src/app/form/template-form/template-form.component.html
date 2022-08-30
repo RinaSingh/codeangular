@@ -1,0 +1,50 @@
+<h1>User form</h1>
+<div class="col-md-7 m-auto border border-success p-5">
+    <form (ngSubmit) = "onSubmit(f)" #f="ngForm">
+        <div class="mb-3">
+            <label for="userName" class="form-label">*User Name</label>
+            <input type="text" class="form-control" name="userName" ngModel required #userName="ngModel">
+            <small class="text-danger" *ngIf="!userName.valid && email.touched">Please Enter user name</small>
+        </div>
+        <div class="mb-3">
+            <label for="email" class="form-label">*Email address</label>
+            <input type="email" class="form-control" name="email" aria-describedby="emailHelp" ngModel required email #email="ngModel">
+            <small class="text-danger" *ngIf="!email.valid && email.touched">Please Enter Valid Email address</small>
+            <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+        </div>
+        <div class="mb-3">
+            <label for="pass" class="form-label">*Password</label>
+            <input type="password" class="form-control" name="pass" ngModel required minlength="6" maxlength="40">
+        </div>
+        <div class="mb-3 form-check">
+            <input type="checkbox" class="form-check-input" name="formCheck" [ngModel]="formChecked">
+            <label class="form-check-label" for="formCheck">Check me out</label>
+        </div>
+        <div class="mb-3">
+            <select class="form-select" aria-label="Default select example" name="default" [ngModel]="defaultVal">
+                <option value="Angular">Angular</option>
+                <option value="HTML">HTML</option>
+                <option value="CSS">CSS</option>
+            </select>
+        </div>
+        <div class="mb-3 form-check" *ngFor="let item of genders">
+            <input class="form-check-input" type="radio" name="gender" id="{{item.id}}" [ngModel]="checkedVal" value="{{item.gender}}">
+            <label class="form-check-label" for="{{item.id}}">
+                {{item.gender}}
+            </label>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+    
+</div>
+<br>
+<br>
+<div class="col-md-7 m-auto border border-success p-5 m-5" *ngIf="isDataSubmitted">
+    <h3>Form Details</h3>
+    <p>User Name: {{submittedDataModel.username}}</p>
+    <p>Email:{{submittedDataModel.email}}</p>
+    <p>Password:{{submittedDataModel.password}}</p>
+    <p>Select Course is:{{submittedDataModel.course}}</p>
+    <p>Select Gender is:{{submittedDataModel.gender}}</p>
+    <p>Is user remember password: {{submittedDataModel.formCheck}}</p>
+</div>

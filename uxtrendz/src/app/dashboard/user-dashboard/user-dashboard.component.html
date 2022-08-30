@@ -1,0 +1,24 @@
+<h3>Welcome To <strong>
+    user-dashboard!
+</strong></h3>
+<hr>
+<div class="container bg-warning border border-success p-2">
+    <div class="row">
+        <div class="col-3 m-3" *ngFor="let emp of empArr">
+            <div class="card" style="width: 18rem;">
+                <img src="https://cdn-icons-png.flaticon.com/512/1053/1053244.png" class="card-img-top" alt="...">
+                
+                <div class="card-body">
+                    <h5 class="card-title"><strong>{{emp.id}} </strong> {{emp.employee_name}}</h5>
+                    <p class="card-text">{{emp.employee_salary}}</p>
+                    <span class="bg-success p-2 text-white">Active</span>
+                    <hr>
+                    <div>
+                        <button class="btn btn-primary" style="margin-right:20px">View Employee</button>
+                        <button class="btn btn-danger">Delete</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

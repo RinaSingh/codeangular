@@ -1,0 +1,26 @@
+<div class="box1">
+    <h1 [class.myClass]="myPro">Box1</h1>
+    <div>
+        <p *ngFor="let car of cars" class="btn" [ngClass]="{
+            'btn-danger':car.color === 'blue',
+            'btn-secondary':car.color === 'olive',
+            'btn-success':car.color === 'orange',
+            'btn-light':car.color === 'red',
+            'btn-warning':car.color === 'green',
+            'btn-info':car.color === 'purple',
+            'btn-custom':car.color === 'lime'
+        }">{{car.name}}</p>
+        
+    </div>
+
+</div>
+<div class="box2"><h1 class="center">Box2</h1>
+<!-- <button class="btn" [ngClass]="myBtnColor.colorName">Click</button> -->
+<button class="btn" [ngClass]="{
+    'btn-danger':myBtnColor.colorName === 'btn-danger',
+    'btn-success':myBtnColor.colorName === 'btn-success',
+    'btn-warning':myBtnColor.colorName === 'btn-warning',
+    'btn-secondary':myBtnColor.colorName === 'btn-secondary',
+    'btn-dark':myBtnColor.colorName === 'btn-dark'
+}">Click Me</button>
+</div>
